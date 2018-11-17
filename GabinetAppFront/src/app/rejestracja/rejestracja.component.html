@@ -1,0 +1,101 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+  <h2 class="text-center text-green">Zarejestruj się</h2>
+
+  <hr>
+
+  <div class="form-group">
+    <label class="control-label" style="margin-right:10px">Płeć: </label>
+    <label class="radio-inline">
+      <input class="mr-3" type="radio" value="male" formControlName="gender">Mężczyzna
+    </label>
+    <label class="radio-inline ml-3">
+      <input class="mr-3" type="radio" value="female" formControlName="gender">Kobieta
+    </label>
+  </div>
+
+  <div class="form-group">
+    <input type="text" 
+      [ngClass]="{'is-invalid': registerForm.get('username').errors 
+        && registerForm.get('username').touched}"
+      class="form-control is-invalid" 
+      formControlName="username" 
+      placeholder="Login">
+    <div class="invalid-feedback">Proszę wybrać nazwę użytkownika</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('name').errors && registerForm.get('name').touched}" class="form-control"
+      placeholder="Imię" formControlName="name">
+    <div class="invalid-feedback" *ngIf="registerForm.get('name').touched && registerForm.get('name').hasError('required')">Prosze podać imię</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('surname').errors && registerForm.get('surname').touched}" class="form-control"
+      placeholder="Nazwisko" formControlName="surname">
+    <div class="invalid-feedback" *ngIf="registerForm.get('surname').touched && registerForm.get('surname').hasError('required')">Prosze podać nazwisko</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('dateOfBirth').errors && registerForm.get('dateOfBirth').touched}" class="form-control"
+      placeholder="Data urodzenia" formControlName="dateOfBirth" type="text" bsDatepicker [bsConfig]="bsConfig">
+    <div class="invalid-feedback" *ngIf="registerForm.get('dateOfBirth').touched && registerForm.get('dateOfBirth').hasError('required')">Proszę wybrać datę urodzenia</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('address').errors && registerForm.get('address').touched}" class="form-control"
+      placeholder="Adres" formControlName="address">
+    <div class="invalid-feedback" *ngIf="registerForm.get('address').touched && registerForm.get('address').hasError('required')">Prosze podać nazwisko</div>
+  </div>
+
+
+  <div class="form-group">
+    <input type="password" 
+      [ngClass]="{'is-invalid': registerForm.get('password').errors 
+        && registerForm.get('password').touched}"
+      class="form-control" 
+      formControlName="password" 
+      placeholder="Hasło">
+      <div class="invalid-feedback" 
+        *ngIf="registerForm.get('password').hasError('required') 
+        && registerForm.get('password').touched">
+        Proszę podać hasło
+      </div>
+      <div class="invalid-feedback" 
+        *ngIf="registerForm.get('password').hasError('minlength') 
+        && registerForm.get('password').touched">
+        Hasło musi składać się z 5-10 znaków
+      </div>
+      <div class="invalid-feedback" 
+        *ngIf="registerForm.get('password').hasError('maxlength') 
+        && registerForm.get('password').touched">
+        Hasło musi składać się z 5-10 znaków
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input type="password" 
+      [ngClass]="{'is-invalid': registerForm.get('confirmPassword').errors 
+      && registerForm.get('confirmPassword').touched
+      || registerForm.get('confirmPassword').touched
+      && registerForm.hasError('mismatch')}"
+      class="form-control" 
+      formControlName="confirmPassword" 
+      placeholder="Potwierdź Hasło">
+      <div class="invalid-feedback" 
+        *ngIf="registerForm.get('confirmPassword').hasError('required') 
+        && registerForm.get('confirmPassword').touched">
+        Proszę podać hasło
+      </div>
+      <div class="invalid-feedback" 
+        *ngIf="registerForm.hasError('mismatch') 
+        && registerForm.get('confirmPassword').touched">
+        Hasła muszą być takie same
+      </div>
+  </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-success" [disabled]="!registerForm.valid" type="submit">Rejestruj</button>
+    <button class="btn btn-default" type="button" (click)="cancel()">Anuluj</button>
+  </div>
+</form>

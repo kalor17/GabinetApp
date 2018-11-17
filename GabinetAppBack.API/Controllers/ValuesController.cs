@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GabinetAppBack.API.Controllers
 {
-    
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -20,7 +20,8 @@ namespace GabinetAppBack.API.Controllers
             _context = context;
 
         }
-        // GET api/values
+
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
@@ -28,7 +29,7 @@ namespace GabinetAppBack.API.Controllers
             return Ok(values);
         }
 
-        
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
         {
