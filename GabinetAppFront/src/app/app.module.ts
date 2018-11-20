@@ -19,6 +19,9 @@ import { RezerwacjeComponent } from './rezerwacje/rezerwacje.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { JwtModule } from '@auth0/angular-jwt';
+import { UzytkownikSzczegolyComponent } from './uzytkownik-szczegoly/uzytkownik-szczegoly.component';
+import { UzytkownikEdycjaComponent } from './uzytkownik-edycja/uzytkownik-edycja.component';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -31,7 +34,9 @@ export function tokenGetter() {
       HomeComponent,
       RejestracjaComponent,
       ListaUzytkownikowComponent,
-      RezerwacjeComponent
+      RezerwacjeComponent,
+      UzytkownikSzczegolyComponent,
+      UzytkownikEdycjaComponent
    ],
    imports: [
       BrowserModule,
@@ -54,7 +59,8 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
-      UserService
+      UserService,
+      PreventUnsavedChanges
    ],
    bootstrap: [
       AppComponent

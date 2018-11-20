@@ -1,0 +1,110 @@
+<!-- <div class="container mt-4">
+  <div class="row">
+    <div>
+      <h1>Twój profil</h1>
+    </div>
+    <div>
+      <div class="alert alert-info">
+        <p><strong>Informacja:</strong>Wprowadzono zmiany. Niezapisane zmiany zostaną utracone</p>
+      </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="card">
+        
+        <div class="card-body">
+          <div>
+            <strong>Imie:</strong>
+            <p>{{user?.name}}</p>
+          </div>
+          <div>
+            <strong>Nazwisko:</strong>
+            <p>{{user?.surname}}</p>
+          </div>
+          <div>
+            <strong>Data urodzenia:</strong>
+            <p>{{user?.dateOfBirth}}</p>
+          </div>
+          <div>
+            <strong>Adres:</strong>
+            <p>{{user?.address}}</p>
+          </div>
+          <div>
+            <strong>Ostatnia wizyta:</strong>
+            <p>{{user?.lastVisit}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-success btn-block">Edytuj</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+                      <h4>Imię:</h4>
+                      <input type="text" class="form-control" name="name" [(ngModel)]="user.name">
+                      <h4>Nazwisko:</h4>
+                      <input type="text" class="form-control" name="surname" [(ngModel)]="user.surname">
+                      <h4>Adres:</h4>
+                      <input type="text" class="form-control" name="address" [(ngModel)]="user.address">      
+                </form>
+        </div>
+    </div>
+
+  </div> -->
+
+  <div class="container mt-4">
+      <div class="row">
+        <div class="col-sm-4">
+            <h1>Twój profil</h1>
+        </div>
+        <div class="col-sm-4">
+          <div *ngIf="editForm.dirty" class="alert alert-info">
+            <strong>Informacja:</strong> Wprowadzono zmiany. Niezapisane zmiany zostaną utracone!
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+                <div>
+                    <strong>Imie:</strong>
+                    <p>{{user?.name}}</p>
+                  </div>
+                  <div>
+                    <strong>Nazwisko:</strong>
+                    <p>{{user?.surname}}</p>
+                  </div>
+                  <div>
+                    <strong>Data urodzenia:</strong>
+                    <p>{{user?.dateOfBirth}}</p>
+                  </div>
+                  <div>
+                    <strong>Adres:</strong>
+                    <p>{{user?.address}}</p>
+                  </div>
+                  <div>
+                    <strong>Ostatnia wizyta:</strong>
+                    <p>{{user?.lastVisit}}</p>
+                  </div>
+            </div>
+            <div class="card-footer">
+                <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+                <h4>Imię:</h4>
+                <input type="text" class="form-control" name="name" [(ngModel)]="user.name">
+                <h4>Nazwisko:</h4>
+                <input type="text" class="form-control" name="surname" [(ngModel)]="user.surname">
+                <h4>Adres:</h4>
+                <input type="text" class="form-control" name="address" [(ngModel)]="user.address">      
+          </form>
+        </div>
+      </div>
+    </div>

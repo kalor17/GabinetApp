@@ -20,7 +20,7 @@
         </a>
       
         <div class="dropdown-menu mt-2" *dropdownMenu>
-          <a class="dropdown-item" href="#">Edytuj profil</a>
+          <a class="dropdown-item" [routerLink]="['/user/edit']" routerLinkActive="router-link-active" >Edytuj profil</a>
           <a class="dropdown-item" href="#">Pokaż rezerwacje</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="logout()" href="#">Wyloguj</a>
