@@ -25,16 +25,23 @@ namespace GabinetAppBack.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(v => v.Visits).FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _context.Users.Include(v => v.Visits).ToListAsync();
 
             return users;
+        }
+
+        public async Task<Visit> GetVisit(int id)
+        {
+            var visit = await _context.Visits.FirstOrDefaultAsync(v => v.Id == id);
+
+            return visit;
         }
 
         public async Task<bool> SaveAll()

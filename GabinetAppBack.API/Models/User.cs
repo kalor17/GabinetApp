@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace GabinetAppBack.API.Models
 {
@@ -15,6 +16,7 @@ namespace GabinetAppBack.API.Models
         public DateTime LastVisit { get; set; }
         public string Address { get; set; }
         public string Role { get; set; }
-        
+
+        public ICollection<Visit> Visits {get; set;}
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using GabinetAppBack.API.Models;
 
 namespace GabinetAppBack.API.Dtos
 {
@@ -12,6 +14,7 @@ namespace GabinetAppBack.API.Dtos
         public DateTime DateOfBirth { get; set; }
         public DateTime LastVisit { get; set; }
         public string Address { get; set; }
+        public ICollection<VisitForDetailedDto> Visits { get; set; }
 
         
     }
