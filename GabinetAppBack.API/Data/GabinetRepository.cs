@@ -37,6 +37,13 @@ namespace GabinetAppBack.API.Data
             return users;
         }
 
+        public async Task<IEnumerable<Visit>> GetVisits()
+        {
+            var visits = await _context.Visits.ToListAsync();
+
+            return visits;
+        }
+
         public async Task<Visit> GetVisit(int id)
         {
             var visit = await _context.Visits.FirstOrDefaultAsync(v => v.Id == id);

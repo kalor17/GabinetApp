@@ -5,6 +5,7 @@ import { AlertifyService } from '../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { NgForm } from '@angular/forms';
+import { Visit } from '../_models/Visit';
 
 @Component({
   selector: 'app-uzytkownik-edycja',

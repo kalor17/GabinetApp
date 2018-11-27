@@ -22,6 +22,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { UzytkownikSzczegolyComponent } from './uzytkownik-szczegoly/uzytkownik-szczegoly.component';
 import { UzytkownikEdycjaComponent } from './uzytkownik-edycja/uzytkownik-edycja.component';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { VisitService } from './_services/visit.service';
+import { WizytaListComponent } from './wizyta-list/wizyta-list.component';
+import { WizytaAddComponent } from './wizyta-add/wizyta-add.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -36,7 +39,9 @@ export function tokenGetter() {
       ListaUzytkownikowComponent,
       RezerwacjeComponent,
       UzytkownikSzczegolyComponent,
-      UzytkownikEdycjaComponent
+      UzytkownikEdycjaComponent,
+      WizytaListComponent,
+      WizytaAddComponent
    ],
    imports: [
       BrowserModule,
@@ -60,6 +65,7 @@ export function tokenGetter() {
       AlertifyService,
       AuthGuard,
       UserService,
+      VisitService,
       PreventUnsavedChanges
    ],
    bootstrap: [

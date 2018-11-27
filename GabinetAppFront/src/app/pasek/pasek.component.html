@@ -6,16 +6,19 @@
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/reservation']" routerLinkActive="router-link-active" >Rezerwacja</a>
         </li>
-        <li class="nav-item" [routerLink]="['/users']" routerLinkActive="router-link-active"  routerLinkActive="router-link-active">
-          <a class="nav-link">Lista pacjentów</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/users']" routerLinkActive="router-link-active" >Lista pacjentów</a>
         </li>
+        <!-- <li class="nav-item" [routerLink]="['/users']" routerLinkActive="router-link-active">
+          <a class="nav-link">Lista pacjentów</a>
+        </li> -->
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Disabled</a>
         </li> -->
       </ul>
   
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
-        <a class="dropdown-toggle text-light" dropdownToggle>
+        <a class="dropdown-toggle text-light" dropdownToggle routerLinkActive="router-link-active">
           Witaj {{authService.decodedToken?.unique_name}}
         </a>
       

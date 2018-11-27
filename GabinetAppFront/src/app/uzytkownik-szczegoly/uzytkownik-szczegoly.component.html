@@ -1,8 +1,6 @@
 <div class="container mt-4">
   <div class="row">
     <div class="card">
-      
-      
       <div class="card-body">
         <div>
           <h5 class="card-title">Szczegóły pacjenta:</h5>
@@ -30,8 +28,8 @@
       </div>
       <div class="card-footer">
         <div class="btn-group d-flex">
-          <button class="btn btn-primary w-100">Poprzednie wizyty</button>
-          <button class="btn btn-success w-100">Dodaj wizytę</button>
+          <button class="btn btn-primary w-100" [routerLink]="['/users', user.id, 'visits']" routerLinkActive="router-link-active">Poprzednie wizyty</button>
+          <button class="btn btn-success w-100" [routerLink]="['/users', user.id, 'visits', 'add']" routerLinkActive="router-link-active">Dodaj wizytę</button>
         </div>
       </div>
     </div>

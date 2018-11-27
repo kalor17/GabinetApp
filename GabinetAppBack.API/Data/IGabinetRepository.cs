@@ -12,5 +12,7 @@ namespace GabinetAppBack.API.Data
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(int id);
          Task<Visit> GetVisit(int id);
+         Task<IEnumerable<Visit>> GetVisits();
+
     }
 }

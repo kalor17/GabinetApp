@@ -1,3 +1,5 @@
+import { Visit } from './visit';
+
 export interface User {
     id: number;
     username: string;
@@ -8,4 +10,5 @@ export interface User {
     address: string;
     gender: string;
     role: string;
+    visits?: Visit[];
 }

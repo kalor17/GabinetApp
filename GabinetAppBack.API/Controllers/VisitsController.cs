@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -31,6 +32,17 @@ namespace GabinetAppBack.API.Controllers
             var visit = _mapper.Map<VisitForDetailedDto>(visitFromRepo);
 
             return Ok(visit);
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetVisits()
+        {
+            var visitsFromRepo = await _repo.GetVisits();
+            
+            var visits = _mapper.Map<IEnumerable<VisitForDetailedDto>>(visitsFromRepo);
+
+            return Ok(visits);
 
         }
 
