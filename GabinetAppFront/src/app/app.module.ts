@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { RezerwacjeComponent } from './rezerwacje/rezerwacje.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { RoleGuard } from './_guards/role.guard';
 import { UserService } from './_services/user.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UzytkownikSzczegolyComponent } from './uzytkownik-szczegoly/uzytkownik-szczegoly.component';
@@ -64,6 +65,7 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+      RoleGuard,
       UserService,
       VisitService,
       PreventUnsavedChanges

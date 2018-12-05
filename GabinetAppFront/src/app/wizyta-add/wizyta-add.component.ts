@@ -27,7 +27,7 @@ export class WizytaAddComponent implements OnInit {
 
   createAddForm() {
     this.addForm = this.fb.group({
-      tooth: ['', [Validators.required]],
+      tooth: ['', [Validators.required, Validators.min(1), Validators.max(32)]],
       description: ['', Validators.required],
       price: ['', Validators.required],
     });
@@ -45,6 +45,7 @@ export class WizytaAddComponent implements OnInit {
     this.visit = Object.assign({}, this.addForm.value);
     this.visitService.addVisit(this.user.id, this.visit).subscribe(() => {
       this.alertify.success('Dodano wizytę');
+      this.addForm.reset();
     }, error => {
       this.alertify.error(error);
     });

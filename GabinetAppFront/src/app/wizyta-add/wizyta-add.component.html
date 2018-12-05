@@ -8,8 +8,10 @@
       <div class="row">
         <div class="form-group">
           <input type="number" [ngClass]="{'is-invalid': addForm.get('tooth').errors && addForm.get('tooth').touched}" class="form-control"
-            placeholder="Leczony ząb" formControlName="tooth">
+            placeholder="Leczony ząb" formControlName="tooth" min="1" max="32">
           <div class="invalid-feedback" *ngIf="addForm.get('tooth').touched && addForm.get('tooth').hasError('required')">Prosze podać ząb, który był leczony</div>
+          <div class="invalid-feedback" *ngIf="addForm.get('tooth').touched && addForm.get('tooth').hasError('min')">Numer zęba musi być z przedziału 1-32</div>
+          <div class="invalid-feedback" *ngIf="addForm.get('tooth').touched && addForm.get('tooth').hasError('max')">Numer zęba musi być z przedziału 1-32</div>
           <input type="number" [ngClass]="{'is-invalid': addForm.get('price').errors && addForm.get('price').touched}" class="form-control"
             placeholder="Cena" formControlName="price">
           <div class="invalid-feedback" *ngIf="addForm.get('price').touched && addForm.get('price').hasError('required')">Prosze podać cenę</div>

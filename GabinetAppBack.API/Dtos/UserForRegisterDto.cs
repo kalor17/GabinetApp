@@ -24,7 +24,7 @@ namespace GabinetAppBack.API.Dtos
 
         public UserForRegisterDto()
         {
-            this.Role = "pacjent";
+            this.Role = "patient";
         }
     }
 }

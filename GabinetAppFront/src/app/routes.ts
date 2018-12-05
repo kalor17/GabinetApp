@@ -8,19 +8,29 @@ import { UzytkownikEdycjaComponent } from './uzytkownik-edycja/uzytkownik-edycja
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { WizytaListComponent } from './wizyta-list/wizyta-list.component';
 import { WizytaAddComponent } from './wizyta-add/wizyta-add.component';
+import { RejestracjaComponent } from './rejestracja/rejestracja.component';
+import { RoleGuard } from './_guards/role.guard';
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent},
+    { path: 'registration', component: RejestracjaComponent},
+    {
+        path: '',
+        runGuardsAndResolvers: 'always',
+        canActivate: [RoleGuard],
+        children: [
+            { path: 'users', component: ListaUzytkownikowComponent},
+            { path: 'users/:id', component: UzytkownikSzczegolyComponent},
+            { path: 'users/:id/visits', component: WizytaListComponent},
+            { path: 'users/:id/visits/add', component: WizytaAddComponent},
+        ]
+    },
     {
         path: '',
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
             { path: 'reservation', component: RezerwacjeComponent},
-            { path: 'users', component: ListaUzytkownikowComponent},
-            { path: 'users/:id', component: UzytkownikSzczegolyComponent},
-            { path: 'users/:id/visits', component: WizytaListComponent},
-            { path: 'users/:id/visits/add', component: WizytaAddComponent},
             { path: 'user/edit', component: UzytkownikEdycjaComponent, canDeactivate: [PreventUnsavedChanges]},
         ]
     },

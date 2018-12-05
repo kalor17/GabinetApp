@@ -23,7 +23,7 @@ login(model: any) {
       if (user) {
         localStorage.setItem('token', user.token);
         this.decodedToken = this.jwtHelper.decodeToken(user.token);
-        console.log(this.decodedToken);
+        console.log(this.decodedToken.unique_name, this.decodedToken.role, this.isDentist());
       }
     })
   );
@@ -36,6 +36,17 @@ register(user: User) {
 loggedIn() {
   const token = localStorage.getItem('token');
   return !this.jwtHelper.isTokenExpired(token);
+}
+
+isDentist() {
+  const token = localStorage.getItem('token');
+  if (this.jwtHelper.isTokenExpired(token)) {
+    return false;
+  }
+  if (this.decodedToken.role === 'dentist') {
+    return true;
+  }
+  return false;
 }
 
 }

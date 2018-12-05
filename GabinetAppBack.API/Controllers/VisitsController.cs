@@ -49,8 +49,8 @@ namespace GabinetAppBack.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddVisit(int userId, VisitForAddDto visitForAddDto)
         {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
+            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
 
             var userFromRepo = await _repo.GetUser(userId);
 

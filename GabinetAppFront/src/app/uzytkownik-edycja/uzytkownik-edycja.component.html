@@ -80,7 +80,7 @@
                   </div>
                   <div>
                     <strong>Data urodzenia:</strong>
-                    <p>{{user?.dateOfBirth}}</p>
+                    <p>{{user?.dateOfBirth | date: 'dd-MM-yyyy '}}</p>
                   </div>
                   <div>
                     <strong>Adres:</strong>
@@ -88,7 +88,7 @@
                   </div>
                   <div>
                     <strong>Ostatnia wizyta:</strong>
-                    <p>{{user?.lastVisit}}</p>
+                    <p>{{user?.lastVisit | date: 'dd-MM-yyyy HH:mm:ss '}}</p>
                   </div>
             </div>
             <div class="card-footer">

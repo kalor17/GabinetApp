@@ -20,14 +20,18 @@ export class PasekComponent implements OnInit {
     this.authService.login(this.model).subscribe(next => {
       this.alertify.success('Logowanie udane');
     }, error => {
-      this.alertify.error(error);
+      this.alertify.error('Błędny login lub hasło');
     }, () => {
-      this.router.navigate(['/reservation']);
+      this.router.navigate(['/user/edit']);
     });
   }
 
   loggedIn() {
     return this.authService.loggedIn();
+  }
+
+  isDentist() {
+    return this.authService.isDentist();
   }
 
   logout() {

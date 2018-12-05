@@ -55,12 +55,6 @@ export class RejestracjaComponent implements OnInit {
           this.router.navigate(['/reservation']);
         });
       });
-    // this.authService.register(this.model).subscribe(() => {
-    //   this.alertify.success('Rejestracja powiodla sie');
-    // }, error => {
-    //   this.alertify.error(error);
-    // });
-    // console.log(this.registerForm.value);
   }
 }
 
