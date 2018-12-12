@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using GabinetAppBack.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -77,6 +78,15 @@ namespace GabinetAppBack.API.Data
         public async Task<IEnumerable<Reservation>> GetReservations()
         {
             var reservations = await _context.Reservations.ToListAsync();
+
+            return reservations;
+        }
+
+        public async Task<IEnumerable<Reservation>> GetUserReservations(int id)
+        {
+            var user = await _context.Users.Include(v => v.Visits).Include(r => r.Reservations).FirstOrDefaultAsync(u => u.Id == id);
+            List<Reservation> reservations = new List<Reservation>();
+            reservations = user.Reservations.ToList();
 
             return reservations;
         }

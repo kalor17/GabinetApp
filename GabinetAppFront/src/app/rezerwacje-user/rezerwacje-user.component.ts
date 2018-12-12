@@ -4,27 +4,28 @@ import { UserService } from '../_services/user.service';
 import { ReservationService } from '../_services/reservation.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from '../_services/auth.service';
 import { Reservation } from '../_models/reservation';
 
 @Component({
-  selector: 'app-rezerwacje',
-  templateUrl: './rezerwacje.component.html',
-  styleUrls: ['./rezerwacje.component.css']
+  selector: 'app-rezerwacje-user',
+  templateUrl: './rezerwacje-user.component.html',
+  styleUrls: ['./rezerwacje-user.component.css']
 })
-export class RezerwacjeComponent implements OnInit {
+export class RezerwacjeUserComponent implements OnInit {
   user: User;
-  reservations: Reservation[];
 
   constructor(private userService: UserService, private reservationsService: ReservationService, private alertify: AlertifyService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit() {
-    // this.loadUser();
+    this.loadUser();
     this.loadReservations();
   }
 
   loadUser() {
-    this.userService.getUser(+this.route.snapshot.params['id']).subscribe((user: User) => {
+    this.userService.getUser(this.authService.decodedToken.nameid).subscribe((user: User) => {
       this.user = user;
     }, error => {
       this.alertify.error(error);
@@ -32,12 +33,11 @@ export class RezerwacjeComponent implements OnInit {
   }
 
   loadReservations() {
-    this.reservationsService.getReservationsList().subscribe((reservations: Reservation[]) => {
-      this.reservations = reservations;
+    this.reservationsService.getUserReservations(this.user.id).subscribe((reservations: Reservation[]) => {
+      this.user.reservations = reservations;
     }, error => {
       this.alertify.error(error);
     });
   }
-
 
 }

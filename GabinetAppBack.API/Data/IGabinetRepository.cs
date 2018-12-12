@@ -17,6 +17,7 @@ namespace GabinetAppBack.API.Data
          Task<IEnumerable<Visit>> GetVisits();
          Task<Reservation> GetReservation(int id);
          Task<IEnumerable<Reservation>> GetReservations();
+         Task<IEnumerable<Reservation>> GetUserReservations(int id);
 
     }
 }

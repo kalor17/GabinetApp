@@ -10,6 +10,7 @@ import { WizytaListComponent } from './wizyta-list/wizyta-list.component';
 import { WizytaAddComponent } from './wizyta-add/wizyta-add.component';
 import { RejestracjaComponent } from './rejestracja/rejestracja.component';
 import { RoleGuard } from './_guards/role.guard';
+import { RezerwacjeUserComponent } from './rezerwacje-user/rezerwacje-user.component';
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent},
@@ -32,6 +33,7 @@ export const appRoutes: Routes = [
         children: [
             { path: 'reservation', component: RezerwacjeComponent},
             { path: 'user/edit', component: UzytkownikEdycjaComponent, canDeactivate: [PreventUnsavedChanges]},
+            { path: 'user/reservation', component: RezerwacjeUserComponent},
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'},

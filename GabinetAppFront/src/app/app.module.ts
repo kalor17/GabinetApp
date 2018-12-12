@@ -26,6 +26,8 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { VisitService } from './_services/visit.service';
 import { WizytaListComponent } from './wizyta-list/wizyta-list.component';
 import { WizytaAddComponent } from './wizyta-add/wizyta-add.component';
+import { ReservationService } from './_services/reservation.service';
+import { RezerwacjeUserComponent } from './rezerwacje-user/rezerwacje-user.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -42,7 +44,8 @@ export function tokenGetter() {
       UzytkownikSzczegolyComponent,
       UzytkownikEdycjaComponent,
       WizytaListComponent,
-      WizytaAddComponent
+      WizytaAddComponent,
+      RezerwacjeUserComponent
    ],
    imports: [
       BrowserModule,
@@ -68,6 +71,7 @@ export function tokenGetter() {
       RoleGuard,
       UserService,
       VisitService,
+      ReservationService,
       PreventUnsavedChanges
    ],
    bootstrap: [

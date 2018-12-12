@@ -3,7 +3,7 @@
       <a class="navbar-brand" [routerLink]="['/home']">Twój Gabinet</a>
 
       <ul class="navbar-nav mr-auto">
-        <li *ngIf="loggedIn() && !isDentist()" class="nav-item" routerLinkActive="active">
+        <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/reservation']" routerLinkActive="router-link-active" >Rezerwacja</a>
         </li>
         <li *ngIf="isDentist()" class="nav-item" routerLinkActive="active">
@@ -27,7 +27,7 @@
       
         <div class="dropdown-menu mt-2" *dropdownMenu>
           <a class="dropdown-item" [routerLink]="['/user/edit']" routerLinkActive="router-link-active" >Edytuj profil</a>
-          <a class="dropdown-item" href="#">Pokaż rezerwacje</a>
+          <a *ngIf="!isDentist()" class="dropdown-item" [routerLink]="['/user/reservation']" routerLinkActive="router-link-active">Pokaż rezerwacje</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="logout()" href="#">Wyloguj</a>
         </div>

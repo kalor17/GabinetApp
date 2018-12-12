@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using GabinetAppBack.API.Data;
@@ -34,22 +35,33 @@ namespace GabinetAppBack.API.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("all", Name = "GetReservations")]
         public async Task<IActionResult> GetReservations()
         {
             var reservationsFromRepo = await _repo.GetReservations();
             
-            var reservation = _mapper.Map<IEnumerable<ReservationForDetailedDto>>(reservationsFromRepo);
+            var reservations = _mapper.Map<IEnumerable<ReservationForDetailedDto>>(reservationsFromRepo);
 
-            return Ok(reservation);
+            return Ok(reservations);
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserReservations(int userId)
+        {
+            var reservationsFromRepo = await _repo.GetUserReservations(userId);
+            
+            var reservations = _mapper.Map<IEnumerable<ReservationForDetailedDto>>(reservationsFromRepo);
+
+            return Ok(reservations);
 
         }
 
         [HttpPost]
         public async Task<IActionResult> AddReservation(int userId, ReservationForAddDto reservationForAddDto)
         {
-            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
             var userFromRepo = await _repo.GetUser(userId);
 

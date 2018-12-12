@@ -8,7 +8,7 @@
           <th scope="col">Nazwa</th>
         </tr>
       </thead>
-      <tbody *ngFor="let reservation of reservations">
+      <tbody *ngFor="let reservation of user.reservations">
         <tr>
           <th scope="row">{{reservation.start | date: 'dd-MM-yyyy HH:mm:ss '}}</th>
           <td>{{reservation.end | date: 'dd-MM-yyyy HH:mm:ss '}}</td>
