@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GabinetAppBack.API.Models;
@@ -25,14 +26,14 @@ namespace GabinetAppBack.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.Include(v => v.Visits).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(v => v.Visits).Include(r => r.Reservations).FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            var users = await _context.Users.Include(v => v.Visits).ToListAsync();
+            var users = await _context.Users.Include(v => v.Visits).Include(r => r.Reservations).ToListAsync();
 
             return users;
         }
@@ -54,6 +55,30 @@ namespace GabinetAppBack.API.Data
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> FreeTerm(DateTime startDate)
+        {
+            var reservation = await _context.Reservations.FirstOrDefaultAsync(d => d.Start == startDate);
+
+            if(reservation != null)
+                return false;
+            
+            return true;
+        }
+
+        public async Task<Reservation> GetReservation(int id)
+        {
+            var reservation = await _context.Reservations.FirstOrDefaultAsync(r => r.Id == id);
+
+            return reservation;
+        }
+
+        public async Task<IEnumerable<Reservation>> GetReservations()
+        {
+            var reservations = await _context.Reservations.ToListAsync();
+
+            return reservations;
         }
     }
 }

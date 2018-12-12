@@ -15,6 +15,7 @@ namespace GabinetAppBack.API.Dtos
         public DateTime LastVisit { get; set; }
         public string Address { get; set; }
         public ICollection<VisitForDetailedDto> Visits { get; set; }
+        public ICollection<ReservationForDetailedDto> Reservations { get; set; }
 
         
     }

@@ -18,5 +18,6 @@ namespace GabinetAppBack.API.Models
         public string Role { get; set; }
 
         public ICollection<Visit> Visits {get; set;}
+        public ICollection<Reservation> Reservations {get; set;}
     }
 }

@@ -9,5 +9,6 @@ namespace GabinetAppBack.API.Data
         
         public DbSet<User> Users { get; set; }
         public DbSet<Visit> Visits { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

@@ -14,6 +14,8 @@ namespace GabinetAppBack.API.Helpers
             CreateMap<UserForRegisterDto,User>();
             CreateMap<Visit,VisitForDetailedDto>();
             CreateMap<VisitForAddDto,Visit>();
+            CreateMap<Reservation,ReservationForDetailedDto>();
+            CreateMap<ReservationForAddDto,Reservation>();
         }
     }
 }
