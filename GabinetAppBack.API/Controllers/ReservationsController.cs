@@ -68,6 +68,9 @@ namespace GabinetAppBack.API.Controllers
             reservationForAddDto.AddEndDate();
             var reservation = _mapper.Map<Reservation>(reservationForAddDto);
 
+            if(await _repo.GoodTerm(reservation.Start) == false)
+                return BadRequest("Wybrano zły termin");
+            
             if(await _repo.FreeTerm(reservation.Start) == false)
                 return BadRequest("Wybrany termin jest zarezerwowany");
 

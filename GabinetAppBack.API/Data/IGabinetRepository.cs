@@ -11,6 +11,7 @@ namespace GabinetAppBack.API.Data
          void Delete<T>(T entity) where T: class;
          Task<bool> SaveAll();
          Task<bool> FreeTerm(DateTime startDate);
+         Task<bool> GoodTerm(DateTime startDate);
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(int id);
          Task<Visit> GetVisit(int id);

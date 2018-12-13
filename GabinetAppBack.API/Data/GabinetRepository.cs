@@ -90,5 +90,12 @@ namespace GabinetAppBack.API.Data
 
             return reservations;
         }
+
+        public async Task<bool> GoodTerm(DateTime startDate)
+        {
+            if(startDate < DateTime.Now)
+                return false;
+            return true;
+        }
     }
 }

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BsDropdownModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
+
 
 import { AppComponent } from './app.component';
 import { from } from 'rxjs';
@@ -28,6 +30,7 @@ import { WizytaListComponent } from './wizyta-list/wizyta-list.component';
 import { WizytaAddComponent } from './wizyta-add/wizyta-add.component';
 import { ReservationService } from './_services/reservation.service';
 import { RezerwacjeUserComponent } from './rezerwacje-user/rezerwacje-user.component';
+import { RezerwacjeAddComponent } from './rezerwacje-add/rezerwacje-add.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -45,13 +48,15 @@ export function tokenGetter() {
       UzytkownikEdycjaComponent,
       WizytaListComponent,
       WizytaAddComponent,
-      RezerwacjeUserComponent
+      RezerwacjeUserComponent,
+      RezerwacjeAddComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
       ReactiveFormsModule,
+      DlDateTimePickerDateModule,
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
       RouterModule.forRoot(appRoutes),
@@ -68,6 +73,7 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+      FormsModule,
       RoleGuard,
       UserService,
       VisitService,

@@ -24,8 +24,8 @@ getReservation(id, idReservation): Observable<Reservation[]> {
   return this.http.get<Reservation[]>(this.baseUrl + id + '/reservations/' + idReservation);
 }
 
-addReservation(id, visit) {
-  return this.http.post(this.baseUrl + id + '/reservations', visit);
+addReservation(id: number, reservation: Reservation) {
+  return this.http.post(this.baseUrl + id + '/reservations', reservation);
 }
 
 }

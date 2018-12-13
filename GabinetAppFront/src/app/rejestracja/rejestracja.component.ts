@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { BsDaterangepickerConfig } from 'ngx-bootstrap';
 import { User } from '../_models/user';
 import { Router } from '@angular/router';
+import { DlDateTimePickerChange } from 'angular-bootstrap-datetimepicker';
 
 @Component({
   selector: 'app-rejestracja',
@@ -16,6 +17,7 @@ export class RejestracjaComponent implements OnInit {
   user: User;
   registerForm: FormGroup;
   bsConfig: Partial<BsDaterangepickerConfig>;
+
 
   constructor(private authService: AuthService, private alertify: AlertifyService, private fb: FormBuilder, private router: Router) { }
 
