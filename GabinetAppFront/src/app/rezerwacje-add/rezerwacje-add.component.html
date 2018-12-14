@@ -24,18 +24,7 @@
     name="start"
     [(ngModel)]="model.start">
   </dl-date-time-picker>
-  
-    <input class="form-control mr-sm-2" type="text" name="name" placeholder="Nazwa" required [(ngModel)]="model.name">
     <button [disabled]="!reservationForm.valid" class="btn btn-success" type="submit">Zarezerwuj</button>
-  
-    <!-- <div class="form-group">
-      <input type="number" [ngClass]="{'is-invalid': addForm.get('price').errors && addForm.get('price').touched}" class="form-control"
-        placeholder="Cena" formControlName="price">
-      <div class="invalid-feedback" *ngIf="addForm.get('price').touched && addForm.get('price').hasError('required')">Prosze podać cenę</div>
-    </div> -->
-    
-  
-    
   </form>
 </div>
 

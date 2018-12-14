@@ -23,9 +23,9 @@ namespace GabinetAppBack.API.Migrations
 
                     b.Property<DateTime>("End");
 
-                    b.Property<string>("Name");
-
                     b.Property<DateTime>("Start");
+
+                    b.Property<string>("Title");
 
                     b.Property<int>("UserId");
 

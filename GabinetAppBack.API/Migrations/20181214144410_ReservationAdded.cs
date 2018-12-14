@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GabinetAppBack.API.Migrations
 {
-    public partial class AddedReservations : Migration
+    public partial class ReservationAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace GabinetAppBack.API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Start = table.Column<DateTime>(nullable: false),
                     End = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

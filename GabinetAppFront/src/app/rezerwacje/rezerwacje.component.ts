@@ -7,6 +7,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Reservation } from '../_models/reservation';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
+import { moment } from 'ngx-bootstrap/chronos/test/chain';
+import { HOUR } from 'ngx-bootstrap/chronos/units/constants';
+import { getHours } from 'ngx-bootstrap/chronos/utils/date-getters';
 
 @Component({
   selector: 'app-rezerwacje',
@@ -39,6 +42,8 @@ export class RezerwacjeComponent implements OnInit {
       this.calendarOptions = {
         editable: true,
         eventLimit: false,
+        weekends: true,
+        locale: 'pl',
         header: {
           left: 'prev,next today',
           center: 'title',

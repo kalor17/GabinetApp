@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GabinetAppBack.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20181211105938_AddedReservations")]
-    partial class AddedReservations
+    [Migration("20181214144410_ReservationAdded")]
+    partial class ReservationAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,9 +25,9 @@ namespace GabinetAppBack.API.Migrations
 
                     b.Property<DateTime>("End");
 
-                    b.Property<string>("Name");
-
                     b.Property<DateTime>("Start");
+
+                    b.Property<string>("Title");
 
                     b.Property<int>("UserId");
 

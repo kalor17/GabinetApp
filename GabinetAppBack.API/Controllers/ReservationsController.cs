@@ -66,6 +66,7 @@ namespace GabinetAppBack.API.Controllers
             var userFromRepo = await _repo.GetUser(userId);
 
             reservationForAddDto.AddEndDate();
+            reservationForAddDto.Title = userFromRepo.Name + ' ' + userFromRepo.Surname;
             var reservation = _mapper.Map<Reservation>(reservationForAddDto);
 
             if(await _repo.GoodTerm(reservation.Start) == false)
