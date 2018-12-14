@@ -7,3 +7,5 @@
 @import 'node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~open-iconic/font/css/open-iconic-bootstrap.css';
+@import '../node_modules/fullcalendar/dist/fullcalendar.min.css';
+@import '../node_modules/fullcalendar/dist/fullcalendar.css';

@@ -4,6 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BsDropdownModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
+import { FullCalendarModule } from 'ng-fullcalendar';
 
 
 import { AppComponent } from './app.component';
@@ -55,6 +56,7 @@ export function tokenGetter() {
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      FullCalendarModule,
       ReactiveFormsModule,
       DlDateTimePickerDateModule,
       BsDropdownModule.forRoot(),
