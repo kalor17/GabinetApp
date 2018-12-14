@@ -93,7 +93,8 @@ namespace GabinetAppBack.API.Data
 
         public async Task<bool> GoodTerm(DateTime startDate)
         {
-            if(startDate < DateTime.Now)
+            var reservations = await _context.Reservations.ToListAsync();
+            if(startDate < DateTime.Now || startDate.Hour < 9 || startDate.Hour > 17 || startDate.DayOfWeek == DayOfWeek.Saturday || startDate.DayOfWeek == DayOfWeek.Sunday)
                 return false;
             return true;
         }
