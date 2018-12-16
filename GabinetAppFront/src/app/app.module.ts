@@ -32,10 +32,13 @@ import { WizytaAddComponent } from './wizyta-add/wizyta-add.component';
 import { ReservationService } from './_services/reservation.service';
 import { RezerwacjeUserComponent } from './rezerwacje-user/rezerwacje-user.component';
 import { RezerwacjeAddComponent } from './rezerwacje-add/rezerwacje-add.component';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { plLocale } from 'ngx-bootstrap/locale';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
 }
+defineLocale('pl', plLocale);
 
 @NgModule({
    declarations: [

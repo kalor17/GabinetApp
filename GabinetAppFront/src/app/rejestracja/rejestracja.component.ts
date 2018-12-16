@@ -5,6 +5,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { BsDaterangepickerConfig } from 'ngx-bootstrap';
 import { User } from '../_models/user';
 import { Router } from '@angular/router';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { listLocales } from 'ngx-bootstrap/chronos';
 import { DlDateTimePickerChange } from 'angular-bootstrap-datetimepicker';
 
 @Component({
@@ -17,15 +19,25 @@ export class RejestracjaComponent implements OnInit {
   user: User;
   registerForm: FormGroup;
   bsConfig: Partial<BsDaterangepickerConfig>;
+  locale = 'pl';
+  locales = listLocales();
 
 
-  constructor(private authService: AuthService, private alertify: AlertifyService, private fb: FormBuilder, private router: Router) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService, private fb: FormBuilder, private router: Router,
+    private localeService: BsLocaleService) { }
 
   ngOnInit() {
     this.bsConfig = {
-      containerClass: 'theme-dark-blue'
+      containerClass: 'theme-dark-blue',
     };
+    this.localeService.use(this.locale);
     this.createRegisterForm();
+  }
+
+  applyLocale(pop: any) {
+    this.localeService.use(this.locale);
+    pop.hide();
+    pop.show();
   }
 
   createRegisterForm() {

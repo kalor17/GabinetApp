@@ -6,6 +6,9 @@ import { ReservationService } from '../_services/reservation.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 import { Reservation } from '../_models/reservation';
+import * as moment from 'moment';
+import 'moment/locale/pl';
+
 
 @Component({
   selector: 'app-rezerwacje-add',
@@ -21,6 +24,7 @@ export class RezerwacjeAddComponent implements OnInit {
 
   ngOnInit() {
     this.loadUser();
+    moment.locale('pl');
   }
 
   loadUser() {

@@ -24,6 +24,7 @@
     name="start"
     [(ngModel)]="model.start">
   </dl-date-time-picker>
+  <p>{{model.start}}</p>
     <button [disabled]="!reservationForm.valid" class="btn btn-success" type="submit">Zarezerwuj</button>
   </form>
 </div>
