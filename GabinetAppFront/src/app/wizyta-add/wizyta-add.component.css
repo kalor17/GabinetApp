@@ -1,0 +1,12 @@
+.choice label.form-option-label {
+    margin:0;
+    text-align: center;
+    display: block;
+  }
+  
+  input[type=radio] {
+    margin: 0 10px 0 10px;
+         display: block;
+            text-align: center;
+   }
+  

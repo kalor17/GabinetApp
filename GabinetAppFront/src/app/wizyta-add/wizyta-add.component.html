@@ -7,11 +7,27 @@
     
       <div class="row">
         <div class="form-group">
-          <input type="number" [ngClass]="{'is-invalid': addForm.get('tooth').errors && addForm.get('tooth').touched}" class="form-control"
-            placeholder="Leczony ząb" formControlName="tooth" min="1" max="32">
-          <div class="invalid-feedback" *ngIf="addForm.get('tooth').touched && addForm.get('tooth').hasError('required')">Prosze podać ząb, który był leczony</div>
-          <div class="invalid-feedback" *ngIf="addForm.get('tooth').touched && addForm.get('tooth').hasError('min')">Numer zęba musi być z przedziału 1-32</div>
-          <div class="invalid-feedback" *ngIf="addForm.get('tooth').touched && addForm.get('tooth').hasError('max')">Numer zęba musi być z przedziału 1-32</div>
+          <h4 class="text-center text-green">Wybierz leczony ząb:</h4>
+          <p><span>Wybrałeś: </span><b>{{selectedTooth}}</b></p>
+          <hr>  
+
+          <div class="row">
+            <label *ngFor="let zab of teeth">
+              <input type="radio" name="optradio" value="{{zab}}" (change)="radioChangeHandler($event)" checked="">{{zab}}
+            </label>
+
+          </div>
+          <div class="row">
+            <label *ngFor="let zab of teeth2">
+              <input type="radio" name="optradio" value="{{zab}}" (change)="radioChangeHandler($event)" checked="">{{zab}}
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">   
+        <div class="form-group">
+          <h4 class="text-center text-green">Podaj cenę za wizytę:</h4>
           <input type="number" [ngClass]="{'is-invalid': addForm.get('price').errors && addForm.get('price').touched}" class="form-control"
             placeholder="Cena" formControlName="price">
           <div class="invalid-feedback" *ngIf="addForm.get('price').touched && addForm.get('price').hasError('required')">Prosze podać cenę</div>
@@ -20,6 +36,7 @@
       
     
       <div class="form-group">
+        <h4 class="text-center text-green">Podaj opis wizyty:</h4>
         <textarea [ngClass]="{'is-invalid': addForm.get('description').errors && addForm.get('description').touched}" class="form-control"
           placeholder="Opis" formControlName="description" rows="6"></textarea>
         <div class="invalid-feedback" *ngIf="addForm.get('description').touched && addForm.get('description').hasError('required')">Prosze podać opis leczenia</div>
@@ -36,6 +53,8 @@
         <button class="btn btn-success" [disabled]="!addForm.valid" type="submit">Dodaj wizytę</button>
         <button class="btn btn-default" type="button" [routerLink]="['/users', user.id, 'visits']" routerLinkActive="router-link-active">Cofnij</button>
       </div>
+
+
     </form>
 </div>
 

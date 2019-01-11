@@ -34,9 +34,15 @@ namespace GabinetAppBack.API.Data
 
         public async Task<IEnumerable<User>> GetUsers()
         {
+            List<User> patients = new List<User>();
             var users = await _context.Users.Include(v => v.Visits).Include(r => r.Reservations).ToListAsync();
+            foreach(User user in users)
+            {
+                if(user.Role == "patient")
+                    patients.Add(user);
+            }
 
-            return users;
+            return patients;
         }
 
         public async Task<IEnumerable<Visit>> GetVisits()

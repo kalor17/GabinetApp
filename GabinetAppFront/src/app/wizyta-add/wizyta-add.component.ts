@@ -16,6 +16,9 @@ export class WizytaAddComponent implements OnInit {
   visit: Visit;
   user: User;
   addForm: FormGroup;
+  selectedTooth: any ;
+  teeth: any = [18, 17, 16, 15, 14, 13, 12 , 11, 21 , 22, 23, 24, 25, 26, 27, 28];
+  teeth2: any = [38, 37, 36, 35, 34, 33, 32 , 31, 41 , 42, 43, 44, 45, 46, 47, 48];
 
   constructor(private userService: UserService, private visitService: VisitService, private alertify: AlertifyService,
     private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
@@ -25,9 +28,13 @@ export class WizytaAddComponent implements OnInit {
     this.createAddForm();
   }
 
+  radioChangeHandler(event: any) {
+    this.selectedTooth = event.target.value;
+  }
+
   createAddForm() {
     this.addForm = this.fb.group({
-      tooth: ['', [Validators.required, Validators.min(1), Validators.max(32)]],
+      // tooth: ['', [Validators.required, Validators.min(11), Validators.max(48)]],
       description: ['', Validators.required],
       price: ['', Validators.required],
     });
@@ -43,6 +50,7 @@ export class WizytaAddComponent implements OnInit {
 
   addVisit() {
     this.visit = Object.assign({}, this.addForm.value);
+    this.visit.tooth = this.selectedTooth;
     this.visitService.addVisit(this.user.id, this.visit).subscribe(() => {
       this.alertify.success('Dodano wizytę');
       this.addForm.reset();
