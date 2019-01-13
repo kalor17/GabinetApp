@@ -40,4 +40,8 @@ export class UzytkownikEdycjaComponent implements OnInit {
     });
   }
 
+  isDentist() {
+    return this.authService.isDentist();
+  }
+
 }

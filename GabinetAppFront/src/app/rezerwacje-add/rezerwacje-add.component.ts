@@ -41,6 +41,10 @@ export class RezerwacjeAddComponent implements OnInit {
       }, error => {
         this.alertify.error(error);
       });
-}
+  }
+
+  isDentist() {
+    return this.authService.isDentist();
+  }
 
 }

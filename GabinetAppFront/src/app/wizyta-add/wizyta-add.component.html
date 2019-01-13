@@ -5,19 +5,19 @@
     
       <hr>
     
-      <div class="row">
+      <div class="content">
         <div class="form-group">
           <h4 class="text-center text-green">Wybierz leczony ząb:</h4>
           <p><span>Wybrałeś: </span><b>{{selectedTooth}}</b></p>
           <hr>  
 
-          <div class="row">
+          <div class="content">
             <label *ngFor="let zab of teeth">
               <input type="radio" name="optradio" value="{{zab}}" (change)="radioChangeHandler($event)" checked="">{{zab}}
             </label>
 
           </div>
-          <div class="row">
+          <div class="content">
             <label *ngFor="let zab of teeth2">
               <input type="radio" name="optradio" value="{{zab}}" (change)="radioChangeHandler($event)" checked="">{{zab}}
             </label>

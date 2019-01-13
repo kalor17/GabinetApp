@@ -9,4 +9,8 @@
          display: block;
             text-align: center;
    }
+   .content {
+    background-color: #d7d7d7;
+    color: black;
+ }
   

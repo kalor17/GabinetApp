@@ -9,7 +9,7 @@
 <p>{{model.start}}</p>
 </div> -->
 
-<div class="container mt-5">
+<div *ngIf="!isDentist()" class="container mt-5">
   <form #reservationForm="ngForm" (ngSubmit)="reservationAdd()">
     <h2 class="text-center text-green">Zarezerwuj wizytę</h2>
     <h4 class="text-center text-green">Gabinet czynny od poniedziałku do piątku w godzinach 9-17</h4>
@@ -24,7 +24,7 @@
     name="start"
     [(ngModel)]="model.start">
   </dl-date-time-picker>
-  <p>{{model.start}}</p>
+  <p>Wybrano datę: {{model.start | date: 'dd-MM-yyyy HH:mm:ss '}}</p>
     <button [disabled]="!reservationForm.valid" class="btn btn-success" type="submit">Zarezerwuj</button>
   </form>
 </div>

@@ -1,17 +1,16 @@
 <div class="container mt-4">
+  <h2>Rezerwacje wizyt:</h2>
   <div class="row">
     <table class="table table-bordered table-dark">
       <thead class="thead-light">
         <tr>
-          <th scope="col">Start</th>
-          <th scope="col">Koniec</th>
+          <th scope="col">Data</th>
           <th scope="col">Nazwa</th>
         </tr>
       </thead>
       <tbody *ngFor="let reservation of user.reservations">
         <tr>
           <th scope="row">{{reservation.start | date: 'dd-MM-yyyy HH:mm:ss '}}</th>
-          <td>{{reservation.end | date: 'dd-MM-yyyy HH:mm:ss '}}</td>
           <td>{{reservation.title}}</td>
           <!-- <td><button class="btn btn-primary" [routerLink]="['/users/', user.id]" routerLinkActive="router-link-active" ><i class="fa fa-user"></i></button></td> -->
         </tr>

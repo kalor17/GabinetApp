@@ -92,8 +92,12 @@ namespace GabinetAppBack.API.Data
         {
             var user = await _context.Users.Include(v => v.Visits).Include(r => r.Reservations).FirstOrDefaultAsync(u => u.Id == id);
             List<Reservation> reservations = new List<Reservation>();
-            reservations = user.Reservations.ToList();
-
+            //reservations = user.Reservations.ToList();
+            foreach(Reservation rezerwacja in user.Reservations)
+            {
+                if(rezerwacja.Start > DateTime.Now)
+                    reservations.Add(rezerwacja);
+            }
             return reservations;
         }
 
